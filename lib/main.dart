@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,9 +28,18 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _counter = 0;
 
+  Future<Map> _getCharacters() async {
+    Dio dio = new Dio();
+    Response response =
+        await dio.get("https://rickandmortyapi.com/api/character/1");
+    print('*** PRINT HERE ${response.data["results"]}\n');
+    return response.data;
+  }
+
   void _incrementCounter() {
     setState(() {
       _counter++;
+      _getCharacters();
     });
   }
 
