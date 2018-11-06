@@ -28,10 +28,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _counter = 0;
 
+  static Options options = Options(
+      baseUrl: "https://rickandmortyapi.com/api",
+      connectTimeout: 5000,
+      receiveTimeout: 3000);
+
+  Dio dio = Dio(options);
   Future<Map> _getCharacters() async {
-    Dio dio = new Dio();
-    Response response =
-        await dio.get("https://rickandmortyapi.com/api/character/1");
+    Response response = await dio.get("/character");
     print('*** PRINT HERE ${response.data["results"]}\n');
     return response.data;
   }
