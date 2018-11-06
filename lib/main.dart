@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(title: 'Flutter Demo Home Page'),
+      home: Home(title: 'Rick and Morty - Bibiografia'),
     );
   }
 }
