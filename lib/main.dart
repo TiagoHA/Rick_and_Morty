@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:rick_morty/model/characters.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,10 +35,14 @@ class _HomeState extends State<Home> {
       receiveTimeout: 3000);
 
   Dio dio = Dio(options);
-  Future<Map> _getCharacters() async {
+  Future<List<Characters>> _getCharacters() async {
     Response response = await dio.get("/character");
-    print('*** PRINT HERE ${response.data["results"]}\n');
-    return response.data;
+    GetCharacters characters = GetCharacters.fromJson(response.data);
+    characters.results.map((char) {
+      print('Nome: ${char.name.toString()}');
+      return char.name;
+    }).toList();
+    return characters.results;
   }
 
   void _incrementCounter() {
