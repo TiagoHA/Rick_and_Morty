@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:rick_morty/model/characters.dart';
+import 'package:rick_morty/src/model/characters_model.dart';
 
 void main() => runApp(MyApp());
 

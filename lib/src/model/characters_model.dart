@@ -1,29 +1,29 @@
 // To parse this JSON data, do
-// final getCharacters = charactersFromJson(jsonString);
+// final charactersModel = charactersFromJson(jsonString);
 
 import 'dart:convert';
 
-GetCharacters getCharactersFromJson(String str) {
+CharactersModel charactersModelFromJson(String str) {
   final jsonData = json.decode(str);
-  return GetCharacters.fromJson(jsonData);
+  return CharactersModel.fromJson(jsonData);
 }
 
-String charactersToJson(GetCharacters data) {
+String charactersToJson(CharactersModel data) {
   final dyn = data.toJson();
   return json.encode(dyn);
 }
 
-class GetCharacters {
+class CharactersModel {
   Info info;
   List<Characters> results;
 
-  GetCharacters({
+  CharactersModel({
     this.info,
     this.results,
   });
 
-  factory GetCharacters.fromJson(Map<String, dynamic> json) =>
-      new GetCharacters(
+  factory CharactersModel.fromJson(Map<String, dynamic> json) =>
+      new CharactersModel(
         info: Info.fromJson(json["info"]),
         results: new List<Characters>.from(
             json["results"].map((x) => Characters.fromJson(x))),
