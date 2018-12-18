@@ -6,12 +6,12 @@ import 'package:rick_morty/src/model/location_model.dart';
 import 'api_provider.dart';
 
 class Repository {
-  final apiProvider = ApiProvider();
+  final _apiProvider = ApiProvider();
 
-  Future<CharactersModel> fetchCharacters() => apiProvider.fetchCharacters();
-  Future<Characters> fetchCharacter(int id) => apiProvider.fetchCharacter(id);
+  Future<CharactersModel> fetchCharacters() => _apiProvider.fetchCharacters();
+  Future<Characters> fetchCharacter(int id) => _apiProvider.fetchCharacter(id);
 
-  Future<EposideModel> fetchEpisodes() => apiProvider.fetchEpisodes();
+  Future<EposideModel> fetchEpisodes() => _apiProvider.fetchEpisodes();
 
-  Future<LocationModel> fetchLocation() => apiProvider.fetchLocation();
+  Future<LocationModel> fetchLocation() => _apiProvider.fetchLocation();
 }

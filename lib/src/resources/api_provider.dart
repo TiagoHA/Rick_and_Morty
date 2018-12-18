@@ -24,7 +24,7 @@ class ApiProvider {
     if (response.statusCode == 200) {
       return Characters.fromJson(response.data);
     }
-    throw Exception('Failed to load characters');
+    throw Exception('Failed to load character');
   }
 
   Future<EposideModel> fetchEpisodes() async {
@@ -40,6 +40,6 @@ class ApiProvider {
     if (response.statusCode == 200) {
       return LocationModel.fromJson(response.data);
     }
-    throw Exception('Failed to load episodes');
+    throw Exception('Failed to load locations');
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:rick_morty/src/model/characters_model.dart';
+import 'package:rick_morty/src/resources/repository.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,28 +28,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final _repository = Repository();
   int _counter = 0;
 
-  static Options options = Options(
-      baseUrl: "https://rickandmortyapi.com/api",
-      connectTimeout: 5000,
-      receiveTimeout: 3000);
-
-  Dio dio = Dio(options);
-  Future<List<Characters>> _getCharacters() async {
-    Response response = await dio.get("/character");
-    GetCharacters characters = GetCharacters.fromJson(response.data);
-    characters.results.map((char) {
-      print('Nome: ${char.name.toString()}');
-      return char.name;
-    }).toList();
-    return characters.results;
-  }
-
   void _incrementCounter() {
-    setState(() {
+    setState(() async {
       _counter++;
-      _getCharacters();
+      final chars = await _repository.fetchCharacters();
+      chars.results.map((char) => print(char.name));
     });
   }
 
