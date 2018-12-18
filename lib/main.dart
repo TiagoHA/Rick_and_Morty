@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:rick_morty/src/model/characters_model.dart';
 import 'package:rick_morty/src/resources/repository.dart';
 
 void main() => runApp(MyApp());
@@ -31,11 +29,15 @@ class _HomeState extends State<Home> {
   final _repository = Repository();
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() async {
+  void _incrementCounter() async {
+    final chars = await _repository.fetchCharacters();
+    chars.results.map((char) {
+      print(char.name);
+      return char.name;
+    }).toList();
+
+    setState(() {
       _counter++;
-      final chars = await _repository.fetchCharacters();
-      chars.results.map((char) => print(char.name));
     });
   }
 
