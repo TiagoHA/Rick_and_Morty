@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:rick_morty/src/model/characters_model.dart';
-import 'package:rick_morty/src/model/episode_model.dart';
-import 'package:rick_morty/src/model/location_model.dart';
+import 'package:rick_morty/src/models/characters_model.dart';
+import 'package:rick_morty/src/models/episode_model.dart';
+import 'package:rick_morty/src/models/location_model.dart';
 
 class ApiProvider {
-  static final dio = Dio(options);
   static final options = Options(
       baseUrl: "https://rickandmortyapi.com/api",
       connectTimeout: 5000,
       receiveTimeout: 3000);
+  static final dio = Dio(options);
 
   Future<CharactersModel> fetchCharacters() async {
     final response = await dio.get("/character");

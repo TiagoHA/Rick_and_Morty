@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'package:rick_morty/src/model/characters_model.dart';
-import 'package:rick_morty/src/model/episode_model.dart';
-import 'package:rick_morty/src/model/location_model.dart';
+import 'package:rick_morty/src/models/characters_model.dart';
+import 'package:rick_morty/src/models/episode_model.dart';
+import 'package:rick_morty/src/models/location_model.dart';
 
 import 'api_provider.dart';
 
