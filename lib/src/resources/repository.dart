@@ -8,7 +8,8 @@ import 'api_provider.dart';
 class Repository {
   final _apiProvider = ApiProvider();
 
-  Future<CharactersModel> fetchCharacters() => _apiProvider.fetchCharacters();
+  Future<CharactersModel> fetchAllCharapters() =>
+      _apiProvider.fetchAllCharapters();
   Future<Characters> fetchCharacter(int id) => _apiProvider.fetchCharacter(id);
 
   Future<EposideModel> fetchEpisodes() => _apiProvider.fetchEpisodes();

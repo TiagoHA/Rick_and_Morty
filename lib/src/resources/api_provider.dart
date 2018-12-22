@@ -11,7 +11,7 @@ class ApiProvider {
       receiveTimeout: 3000);
   static final dio = Dio(options);
 
-  Future<CharactersModel> fetchCharacters() async {
+  Future<CharactersModel> fetchAllCharapters() async {
     final response = await dio.get("/character");
     if (response.statusCode == 200) {
       return CharactersModel.fromJson(response.data);
