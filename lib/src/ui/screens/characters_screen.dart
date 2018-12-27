@@ -25,15 +25,6 @@ class _CharactersScreenState extends State<CharactersScreen> {
     super.dispose();
   }
 
-  final _repository = Repository();
-  int _counter = 0;
-
-  void _incrementCounter() async {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +35,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
             stream: charsBloc.allCharapters,
             builder: (context, AsyncSnapshot<CharactersModel> snapshot) {
               if (snapshot.hasData) {
-                return CharsList(snapshot);
+                return charsList(context, snapshot);
               } else if (snapshot.hasError) {
                 return Text(snapshot.error.toString());
               }
@@ -52,7 +43,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
             }));
   }
 
-  Widget CharsList(AsyncSnapshot<CharactersModel> snapshot) {
+  Widget charsList(BuildContext context, AsyncSnapshot<CharactersModel> snapshot) {
     return GridView.builder(
         itemCount: snapshot.data.results.length,
         gridDelegate:
@@ -61,7 +52,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
           print('Snapshot.Data');
           print(snapshot.data.toJson());
           final char = snapshot.data.results[index];
-          print('INDEX $index');
+          print('INDEX $index - ${snapshot.data.results.length}');
           return Padding(
             padding: const EdgeInsets.all(1.0),
             child: GridTile(
